@@ -1,0 +1,371 @@
+:root {
+  --primary-color: rgb(0, 59, 149);
+  --secondary-color: rgb(0, 108, 228);
+  --accent-color: rgb(255, 183, 0);
+  --white: #fff;
+  --black: #000;
+  --hover-color: rgba(0, 108, 228, 0.8); /* Couleur pour hover */
+  --text-size-small: 0.9rem;
+  --text-size-medium: 1rem;
+  --text-size-large: 1.2rem;
+  --formulair: rgb(92, 124, 173);
+}
+
+/* Mise en page globale */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--white);
+  color: var(--black);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Réinitialisation globale */
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+  box-sizing: border-box;
+}
+
+/* Couleurs de base */
+.blanc {
+  color: var(--white);
+}
+
+.bleu {
+  color: var(--secondary-color);
+}
+
+/* Fonds */
+.fBleu {
+  background-color: var(--primary-color);
+}
+
+.fBlanc {
+  background-color: var(--white);
+}
+
+.iteme.fBlanc.bleu {
+  background-color: var(--white); /* Fond blanc */
+  color: var(--secondary-color); /* Texte bleu */
+  border: 2px solid var(--secondary-color); /* Optionnel : bordure */
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.iteme.fBlanc.bleu:hover {
+  background-color: var(--secondary-color); /* Fond bleu au survol */
+  color: var(--white); /* Texte blanc au survol */
+  transform: scale(1.05); /* Légère mise en avant au survol */
+}
+
+.iteme:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+}
+
+/* Header et bandeau */
+header {
+  width: 100%;
+  background-color: var(--primary-color);
+  padding: 1rem 0;
+}
+
+.bando {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titre-projec {
+  font-size: var(--text-size-large);
+  font-weight: bold;
+}
+
+.aDroit {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.devise,
+.sav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--primary-color);
+}
+
+.sav {
+  border: 1px solid var(--white);
+}
+
+/* Drapeau */
+.patileDrapeau {
+  display: flex;
+  overflow: hidden;
+  width: 3rem;
+  height: 2rem;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+}
+
+.patileDrapeau div {
+  flex: 1;
+  height: 100%;
+}
+
+.flagBandBleu {
+  background-color: blue;
+}
+
+.flagBandBlan {
+  background-color: white;
+}
+
+.flagBandRed {
+  background-color: red;
+}
+
+/* Main Wrapper */
+#wrape {
+  width: 100%;
+  border: 2px solid gray;
+  padding: 1rem 0;
+}
+
+/* Navigation principale */
+.menue-principale {
+  background-color: var(--primary-color);
+  padding: 1rem;
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  width: 80%;
+  margin: 1rem auto;
+}
+
+.liste-menue {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.liste-iteme {
+  position: relative;
+}
+
+.iteme {
+  color: var(--white);
+  font-size: var(--text-size-medium);
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.iteme:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.iteme:focus {
+  outline: 2px solid var(--accent-color);
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+/* Sous-menu */
+.liste-iteme ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.liste-iteme:hover ul {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sous-liste-iteme {
+  padding: 0.5rem 1rem;
+}
+
+.sous-liste-iteme .iteme {
+  white-space: nowrap;
+}
+
+.sous-liste-iteme .iteme:hover {
+  background-color: var(--hover-color);
+}
+
+/* Main Section */
+main {
+  width: 80%;
+  margin: 2rem auto;
+  font-size: var(--text-size-medium);
+}
+
+/* Footer */
+footer {
+  width: 80%;
+  margin: 2rem auto;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: var(--text-size-small);
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-top: 2px solid var(--accent-color);
+}
+
+/* Formulaire */
+.formulair {
+  background-color: var(--formulair);
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+.titre-formulair {
+  text-align: center;
+  font-size: var(--text-size-large);
+  color: var(--primary-color);
+}
+
+.formDescrption {
+  font-size: var(--text-size-small);
+  color: var(--black);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Structure des champs de formulaire */
+h1.titre-contenu {
+  text-align: center;
+  color: var(--primary-color);
+  margin-top: 30px;
+}
+
+form p {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: var(--text-size-medium);
+  margin-bottom: 5px;
+  color: var(--black);
+}
+
+/* Style des champs de formulaire */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="file"],
+input[type="password"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: var(--text-size-medium);
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 15px; /* Espacement entre les champs */
+}
+
+input[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--text-size-medium);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px); /* Légère remontée pour plus d'interaction */
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+  height: 150px;
+}
+
+/* Titre des sections dans les formulaires */
+h3 {
+  font-size: var(--text-size-medium);
+  color: var(--primary-color);
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bando {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .aDroit {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .menue-principale {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .liste-menue {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .liste-iteme ul {
+    position: static;
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  .formulair {
+    width: 90%;
+  }
+
+  h1.titre-contenu {
+    font-size: 1.5rem;
+  }
+
+  .titre-formulair {
+    font-size: 1.2rem;
+  }
+}

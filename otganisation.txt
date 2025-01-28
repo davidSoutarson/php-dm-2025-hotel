@@ -1,0 +1,70 @@
+phptest2024/
+|-- config/                              # Configuration générale
+|   |-- autoload.php                     # Chargement automatique (via namespaces ou manuel)
+|   |-- config.php                       # Paramètres globaux de l'application
+|   |-- connection_base_donnees.php      # Connexion à la base de données
+|   |-- root.php                         # Définit les constantes globales (chemins, base URL, etc.)
+
+|-- controllers/                         # Logique métier, séparée par domaine fonctionnel
+|   |-- entreprise/                      # Actions liées aux entreprises
+|   |   |-- AjouterHotelController.php   # Ajoute un hôtel
+|   |   |-- DemanderConnectionEntrepriseController.php # Connexion entreprise
+|   |   |-- ValiderInscriptionEntrepriseController.php # Validation inscription entreprise
+|   |-- uploads/                         # Gestion des uploads de fichiers
+|   |   |-- UploadImagesController.php   # Upload des images
+|   |-- utilisateur/                     # Actions liées aux utilisateurs
+|   |   |-- DemanderConnectionUtilisateurController.php # Connexion utilisateur
+|   |   |-- EffectuerReservationController.php # Réservation utilisateur
+|   |   |-- ValiderInscriptionUtilisateurController.php # Validation inscription utilisateur
+
+|-- css/                                 # Feuilles de style
+|   |-- style.css                        # Style principal
+
+|-- database/                            # Gestion de la base de données
+|   |-- migrations/                      # Scripts de création ou modification des tables
+|   |   |-- 03_create_table_chambres_disponibles.php
+|   |   |-- 01_create_table_utilisateurs_entreprises.php
+|   |   |-- 02_create_table_hotels.php
+|   |   |-- 05_create_table_images_hotels.php
+|   |   |-- 04_create_table_images.php
+|   |   |-- 07_create_table_reservations.php
+|   |   |-- 06_create_table_utilisateurs_client.php
+|   |-- seeds/                           # Initialisation de données (vide pour l'instant)
+|   |-- create_database.php              # Script de création initiale de la base de données
+
+|-- images/                              # Contient les fichiers liés aux images
+|   |-- upload/                          # Images uploadées via les formulaires
+|   |   |-- chambres/                    # Images des chambres
+|   |   |-- hotels/                      # Images des hôtels
+|   |-- images_partagees/                # Images partagées ou globales
+
+|-- logs/                                # Journaux d'erreurs et d'activité
+|   |-- php_errors.log                   # Log des erreurs PHP
+
+|-- models/                              # Logique d'accès à la base de données, organisée par entité
+|   |-- entreprises/
+|   |   |-- EntrepriseModel.php          # Modèle pour les entreprises
+|   |-- utilisateurs/
+|   |   |-- ChambresDisponiblesModel.php
+|   |   |-- ImagesHotelsModel.php
+|   |   |-- HotelsModel.php
+|   |   |-- ReservationsModel.php
+|   |   |-- UtilisateurModel.php         # Modèle pour les utilisateurs
+
+view/
+|-- commun/                              # Éléments partagés entre les différentes vues
+|   |-- footer.php
+|   |-- header.php
+|-- entreprise/                          # Vues spécifiques aux entreprises
+|   |-- form_ajouter_hotel.php
+|   |-- form_inscription_entreprise.php
+|   |-- form_connexion_entreprise.php
+|-- utilisateur/                         # Vues spécifiques aux utilisateurs
+|   |-- view_hotels_list.php             # Affiche toutes les informations d'un hôtel
+|   |-- view_reservation_details.php     # Affiche les réservations d'un utilisateur
+|   |-- form_connexion_utilisateur.php
+|   |-- form_inscription_utilisateur.php
+|   |-- form_reservation.php
+|   |-- form_select_hotel.php
+
+|-- index.php                            # Point d'entrée principal de l'application

@@ -6,7 +6,7 @@
  * Les paramètres de connexion sont définis ici et peuvent être inclus dans
  * d'autres fichiers pour y accéder facilement.
  * 
- * @package Phptest2024
+ * @package php-dm-2025-hotel
  * @version 1.0.0
  * 
  * Vous devez inclure ce fichier dans votre code où une connexion à la base de données est nécessaire.

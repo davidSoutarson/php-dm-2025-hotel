@@ -10,8 +10,8 @@ require_once ROOT_DIR . 'config/autoload.php';
  * Ce fichier définit les constantes globales et les chemins nécessaires pour le fonctionnement du projet.
  * Il empêche également l'accès direct et active la gestion des erreurs selon le mode (développement ou production).
  * 
- * @package Phptest2024
- * @version 1.0.1
+ *  @package php-dm-2025-hotel
+ *  @version 1.0.0
  */
 
 // Empêche l'accès direct au fichier root.php
@@ -64,7 +64,7 @@ define('VIEW_UTILISATEUR_DIR', VIEWS_DIR . 'utilisateur' . DIRECTORY_SEPARATOR);
  */
 
 // URL de base du site web
-define('BASE_URL', 'http://localhost/Phptest2024/');
+define('BASE_URL', 'http://localhost/php-dm-2025-hotel/');
 
 // Nom du site et paramètres de langue
 define('SITE_NAME', 'Presque Booking ');      // Nom du projet

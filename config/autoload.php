@@ -7,8 +7,8 @@
  * les classes nécessaires au projet sans avoir à les inclure manuellement.
  * Il prend en charge plusieurs répertoires et gère les namespaces.
  * 
- * @package Phptest2024
- * @version 1.1.0
+ *  @package php-dm-2025-hotel
+ *  @version 1.0.0
  */
 
 /**

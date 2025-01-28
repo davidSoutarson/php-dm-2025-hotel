@@ -4,6 +4,9 @@
 /**
  * Classe de gestion de la connexion à la base de données.
  * Utilise les constantes définies dans config.php pour établir la connexion.
+ * 
+ *  @package php-dm-2025-hotel
+ *  @version 1.0.0
  */
 
 require_once 'config.php';

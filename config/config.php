@@ -20,3 +20,7 @@ define('USER', 'root');       // Nom d'utilisateur pour se connecter à la base 
 define('PASSWORD', '');       // Mot de passe pour se connecter à la base de données
 define('BD_NAME', 'hotel_booking');  // Nom de la base de données à laquelle se connecter
 define('CHARSET', 'utf8mb4'); // Jeu de caractères à utiliser pour la connexion à la base de données
+
+
+// Mode de débogage : true pour afficher les erreurs, false pour les cacher en production
+define('DEBUG_MODE', true); // Change à `false` lorsque l'application passe en production

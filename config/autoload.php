@@ -12,49 +12,62 @@
  */
 
 /**
- * Fonction d'autoload améliorée
- * 
- * Cette fonction recherche automatiquement le fichier correspondant à une classe donnée.
- * Elle suit les conventions suivantes :
- * - Les classes sont réparties dans plusieurs répertoires (`models/`, `controllers/`, `views/`).
- * - Les namespaces sont convertis en chemins de fichiers.
- * - Les fichiers doivent avoir l'extension `.php`.
- * 
- * @param string $class Nom complet de la classe (incluant les namespaces, si applicables).
+ * Fonction d'autoload avec parcours récursif des répertoires
  */
 function autoloader($class)
 {
-    // Liste des répertoires où les classes peuvent être trouvées
-    $directories = [
-        __DIR__ . '/models/',       // Répertoire des modèles
-        __DIR__ . '/controllers/',  // Répertoire des contrôleurs
-        __DIR__ . '/views/',        // Répertoire des vues (si nécessaire)
-    ];
+    // Chemin racine du projet
+    $baseDirectory = __DIR__ . '/../';
 
     // Conversion du namespace en chemin de fichier
     $classPath = str_replace('\\', '/', $class) . '.php';
 
-    // Recherche dans chaque répertoire
-    foreach ($directories as $directory) {
-        // Construction du chemin complet du fichier
-        $filePath = $directory . $classPath;
+    // Recherche récursive dans les répertoires
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($baseDirectory, RecursiveDirectoryIterator::SKIP_DOTS)
+    );
 
-        // Si le fichier existe et est lisible, on l'inclut
-        if (file_exists($filePath) && is_readable($filePath)) {
-            require_once $filePath;
-            return; // La classe a été chargée, on arrête la recherche
+    foreach ($iterator as $file) {
+        if (strpos($file, $classPath) !== false) {
+            require_once $file;
+            return;
         }
     }
 
-    // Si la classe n'a pas été trouvée, gestion des erreurs
+    // Gestion des erreurs si la classe n'est pas trouvée
     if (defined('DEBUG_MODE') && DEBUG_MODE) {
-        // Affichage d'un message d'erreur détaillé en développement
         echo "<pre>Erreur : Le fichier pour la classe '{$class}' est introuvable. Chemin recherché : {$classPath}</pre>";
     } else {
-        // Enregistrement de l'erreur dans le fichier log en production
         error_log("Autoload : Impossible de charger la classe '{$class}'. Chemin recherché : {$classPath}");
     }
 }
 
-// Enregistrement de la fonction d'autoload
 spl_autoload_register('autoloader');
+
+/**
+ * Configuration des erreurs en fonction de l'environnement
+ */
+if (defined('DEBUG_MODE') && DEBUG_MODE) {
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+} else {
+    ini_set('display_errors', 0);
+    ini_set('log_errors', 1);
+    ini_set('error_log', __DIR__ . '/../logs/php_errors.log');
+}
+
+/**
+ * Gestionnaire d'erreurs personnalisé.
+ */
+function handleError($errno, $errstr, $errfile, $errline)
+{
+    $message = "Erreur [{$errno}] : {$errstr} dans {$errfile} à la ligne {$errline}";
+
+    if (defined('DEBUG_MODE') && DEBUG_MODE) {
+        echo "<pre>{$message}</pre>";
+    } else {
+        error_log($message);
+    }
+}
+
+set_error_handler('handleError');

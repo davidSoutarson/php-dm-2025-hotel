@@ -38,8 +38,13 @@ class Database
                 // Création de l'instance PDO
                 self::$connection = new PDO($dsn, USER, PASSWORD, $options);
             } catch (PDOException $e) {
-                // Gestion des erreurs de connexion
-                die("Erreur de connexion à la base de données : " . $e->getMessage());
+                // Gestion des erreurs de connexion en fonction du mode debug
+                if (defined('DEBUG_MODE') && DEBUG_MODE) {
+                    die("Erreur de connexion à la base de données : " . $e->getMessage());
+                } else {
+                    error_log("Erreur de connexion à la base de données : " . $e->getMessage());
+                    die("Erreur interne de la base de données.");
+                }
             }
         }
 
